@@ -1,0 +1,5 @@
+add_library(Cjson cJSON.c)
+add_library(Crypto sha256.c)
+add_library(Iota iota.c)
+add_library(Attributes Attributes.c)
+target_link_libraries(Iota Crypto Attributes Cjson )                  
