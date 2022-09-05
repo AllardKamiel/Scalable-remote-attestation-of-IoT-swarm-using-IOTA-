@@ -11,26 +11,36 @@ The network_start bash files starts a sampleproject where the IOT devices each h
 ## The libaries
 ### IOTA libary 
 This libary contains all of the IOTA functions.
+
 #### import author
 This fuction imports the author from a file location and then returns it.
+
 #### export author
-This fuction exports the author to a filesdsffssfsf
+This fuction exports the author to a file at the author location.
+
 #### import sub
 This fuction imports the sub from a file location and then returns it.
+
 #### export sub
-This fuction exports the subscriber.
+This fuction exports the subscriber to a file at the subscriber location.
+
 #### announce
 This function creates an author of a channel on the tangle. It saves the announcement message as a text file in the announcementlocation. The implementation type is 0 for a single branched channel and 1 for a multibranched channel. The tsp is an IOTA channel variable wich defines which node the program should use to access the tangle.
+
 #### subscribe 
 This functions makes the subscriber subscribe to a channel. It needs to have the location of the announcement message. 
+
 #### send_keyload
 This functions accepts all the subscribers when there adress is in the file located at the subscribers location. After accepting all of the subscribers the author of the channel the author creates a keyload message.
+
 #### keyload_receive_start_branch 
 This function lets each subscriber accept the keyload message by giving it the adress in the file at the keyload location. After accepting the keyload the subscriber starts its own branch by adding a streams message to the tangle.
+
 #### security_string
 The security string makes the a json string with the nonce and timestamp and deltas. This function calculates the delta. Because the functions was not deployed on a real iot device the hash of the firmware and software is not calculated seperatly but a test value is used to do this a seperate hash calculation of these 2 should be added. This is doe in the same way as is done for the nonce and timstamp. For the firmware the begin adress and size of the firmware must be given and for the software the begin adress and size of the software must be given. 
 
 In this protocol this art is later placed in the public part of the iota streams message.
+
 #### write_last_msg_adress
 This functions writes te last message adress and sequende  to a file in the last message adress and sequence location.
 
@@ -38,10 +48,10 @@ This functions writes te last message adress and sequende  to a file in the last
 This function sends a streams message on the channel on the IOTA tangle. The public and private part are seperate intputs and the the last message and sequence file locations are neede because the message is linked to this and after publisching the files are updeate with the new adress and sequence of the new message.
 
 #### Securityreceive
-This function checks wheter or not you have accss to a send message. This is done by calculating the deltas of the iot device itself and checking them with the deltas in the received public part of the IOTA streams message. If you have access the private part of the message is printed. In the future a JSON can be made where all of the private messgaes you have acccess to are put in and then i returned. Then the IoT device has to act on these messages. 
+This function checks wheter or not you have accss to a send message. This is done by calculating the deltas of the iot device itself and checking them with the deltas in the received public part of the IOTA streams message. If you have access 0 is reeturned otherwise 1 is returned.
 
 #### receive_messages_from_tangle
-This function simply fetches all of the unreaded messages from the IOTA streams channel. It uses the security receive function to determine of you have acess to a message or not.
+This function simply fetches all of the unreaded messages from the IOTA streams channel. It uses the security receive function to determine of you have acess to a message or not. if you have access the private part of the message is printed. In the future a JSON can be made where all of the private messgaes you have acccess to are put in and then i returned. Then the IoT device has to act on these messages. 
 #### check_nonce_timestamp
 #### add_nonce_timestamp
 #### cleanup_nonce_timestamp 
