@@ -8,6 +8,13 @@ The bash files take one input the size of the IoT swarm. In the bash file the IO
 The network bash file makes an IOTA streams channel with the wanted amount of subscribers.
 The network_start bash files starts a sampleproject where the IOT devices each have the same set of attributes and send the same message. In a real IoT network each devices attributes must be changed and the attribute policy for sending the message needs to be changed to. 
 
+The bash files copy and execute the project files in a right order to create the IOTA streams channel an give ach of the subscribers it's own branch on this channel.
+
+##IOTA tangle
+You can make your own private tangle by following this link: https://wiki.iota.org/introduction/how_tos/one_click_private_tangle. If you do this on a virtual machine on the school server you will have to do port forwarding to acess the IOTA nodes.
+
+You can also use the public tangle by just deploying a node connected to the real network. This makes it more difficult to look at your network because there is more data traffic. This is done by following the instructions in this link: https://wiki.iota.org/hornet/getting_started. 
+
 ## The libaries
 ### IOTA libary 
 This libary contains all of the IOTA functions.
@@ -52,18 +59,30 @@ This function checks wheter or not you have accss to a send message. This is don
 
 #### receive_messages_from_tangle
 This function simply fetches all of the unreaded messages from the IOTA streams channel. It uses the security receive function to determine of you have acess to a message or not. if you have access the private part of the message is printed. In the future a JSON can be made where all of the private messgaes you have acccess to are put in and then i returned. Then the IoT device has to act on these messages. 
+
 #### check_nonce_timestamp
+This function checks if the given nonce timestamp pair is already in the list. Or if the timestamp value is to low.
+
 #### add_nonce_timestamp
+This function adds a nonce timestamp pair to the nonce timestamp pair list. This list is a json list.
+
 #### cleanup_nonce_timestamp 
+This function makes sure that the nonce timestamp list does not grow infinitely long by deleting nonce timestamp pairs  that are under the a certain timestamp.
 
 ### attribute libary 
+
 #### AND
+This function helps making the different attribute lists when there is an AND in the policy.
+
 #### OR
+This function helps making the different attribute lsits when there is an OR in the policy.
+
 
 #### policy_to_array 
-The policy_to_array function converts an attribute policy to a JSON file with all the lists of attributes.
+The policy_to_array function converts an attribute policy to a cJSON list with all the attributes lists as components of the cJSON.
+
 #### alloptions 
-The all otions function creates a json where all of the possible combinations of the devices attributes are put in.
+The all otions function creates a cJSON where all of the possible combinations of the devices attributes are put in.
 
 ### other libaries
 The channels libary is from IOTA and its functions are mainly used in the self-made IOTA libary 
