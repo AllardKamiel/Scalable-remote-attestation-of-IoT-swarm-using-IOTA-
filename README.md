@@ -15,6 +15,14 @@ You can make your own private tangle by following this link: https://wiki.iota.o
 
 You can also use the public tangle by just deploying a node connected to the real network. This makes it more difficult to look at your network because there is more data traffic. This is done by following the instructions in this link: https://wiki.iota.org/hornet/getting_started. 
 
+## steps
+
+First you create a node or your private tangle so that your IOT swarm can connect with the tangle (paragraph above). 
+
+With the bash file network.bash you give the amount of IOT devices you want in your swarm as a command line input. In this bash file you determine have to change the node url to your own node url of your IOTA node. If you run the file the network is made by creating an autor, after this an announcement message. With this announcement message each of the subscribers are made and subscribe to the channel. After this the author accepts each of the subscribers and creates a keyload message. At last each of the subscribers accept the keyload and create their own branch by adding a message to the keyload message.
+
+In the network_start.bash each of the IOT devices are compiled and run in a seperate terminal. To make the network work properly you have to edit each IOT device by going to the subscriber operation folder in the main file and changing the attributes of the device and the sending policy of the device.
+
 ## The libaries
 ### IOTA libary 
 This libary contains all of the IOTA functions.
